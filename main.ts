@@ -205,6 +205,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Coin, function (sprite, otherSpr
     )
     otherSprite.destroy(effects.halo, 500)
 })
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    game.showLongText("Instructions:                        A button- Jump, Use the left and right buttons to go forward/ backwards. If an enemy touches you then you lose 1 life. If you touch a fireball you lose 2 lives. To kill an enemy jump on it. You can wall jump y jumping onto a wall and jumping off.", DialogLayout.Full)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`door0`, function (sprite, location) {
     effects.confetti.endScreenEffect()
     game.showLongText("Created By Dhillon Flora. Thanks for playing", DialogLayout.Full)
@@ -899,6 +902,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`door`, function (sprite, loca
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Fireball, function (sprite, otherSprite) {
     info.changeLifeBy(-2)
+    otherSprite.destroy(effects.ashes, 200)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -916,6 +920,8 @@ let TP: Sprite = null
 let myEnemy: Sprite = null
 let Killer: Sprite = null
 let Stickdoode: Sprite = null
+game.showLongText("Welcome to Stickman Adventures", DialogLayout.Bottom)
+game.showLongText("Press B button for instructions.", DialogLayout.Bottom)
 tiles.setTilemap(tilemap`level3`)
 info.setLife(5)
 scene.setBackgroundColor(1)
